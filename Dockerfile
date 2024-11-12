@@ -16,16 +16,18 @@ COPY . .
 # Create the database directory
 RUN mkdir -p database
 
+# Create a user and set permissions
+RUN useradd -m smartarts && chown -R smartarts:smartarts /app/database
+
+# Switch to the non-root user
+USER smartarts
+
 # Expose port 5000
 EXPOSE 5000
 
 # Environment variables can be set here with defaults
 ENV BASIC_AUTH_USERNAME=admin
 ENV BASIC_AUTH_PASSWORD=password
-
-# Switch to non-root user for better security
-RUN useradd -m smartarts
-USER smartarts
 
 # Use Gunicorn instead of Flask's development server
 # -w 4: 4 worker processes
