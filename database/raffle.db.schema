@@ -1,0 +1,14 @@
+-- database/raffle.db
+CREATE TABLE artworks (
+    art_id INTEGER PRIMARY KEY,
+    art_title TEXT NOT NULL,
+    artist TEXT NOT NULL,
+    jpg_name TEXT NOT NULL
+);
+
+CREATE TABLE winners (
+    winner_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    art_id INTEGER,
+    winner_name TEXT NOT NULL,
+    FOREIGN KEY (art_id) REFERENCES artworks (art_id)
+);

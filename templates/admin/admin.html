@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATAC SmartArts - Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ATAC SmartArts</a>
+            <div class="navbar-nav">
+                <a class="nav-link active" href="{{ url_for('admin') }}">Admin Panel</a>
+                <a class="nav-link" href="{{ url_for('admin_winners') }}">Artworks List</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10">            
+                <!-- Award Winner Form -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Award Winner</h3>
+                        <form method="POST">
+                            <div class="form-group mb-3">
+                                <label for="art_id">Select Artwork:</label>
+                                <select name="art_id" id="art_id" class="form-control" required>
+                                    {% for artwork in artworks %}
+                                    <option value="{{ artwork.art_id }}">{{ artwork.art_id }}. {{ artwork.art_title }} by {{ artwork.artist }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="winner_name">Winner Name:</label>
+                                <input type="text" name="winner_name" id="winner_name" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Award Artwork</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Recent Winners Table -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Recent Winners</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Winner</th>
+                                        <th>Artwork ID</th>
+                                        <th>Artwork</th>
+                                        <th>Artist</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for winner in recent_winners %}
+                                    <tr>
+                                        <td>{{ winner.winner_name }}</td>
+                                        <td>{{ winner.art_id }}</td>
+                                        <td>{{ winner.art_title }}</td>
+                                        <td>{{ winner.artist }}</td>
+                                        <td>
+                                            <form action="{{ url_for('delete_winner', winner_id=winner.winner_id) }}" 
+                                                  method="POST" 
+                                                  style="display: inline;"
+                                                  onsubmit="return confirm('Are you sure you want to delete this winner? This action cannot be undone.');">
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-undo"></i> Undo
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <div class="text-center mt-4 mb-4">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" 
+                         alt="Logo" 
+                         class="img-fluid" 
+                         style="max-width: 150px;">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Auto focus on winner_name input for testing. Remove for production -->
+    <script>
+        document.getElementById('winner_name').focus();
+    </script>
+</body>
+</html>
