@@ -16,8 +16,12 @@ COPY . .
 # Create the database directory
 RUN mkdir -p database
 
-# Create a user and set permissions
-RUN useradd -m smartarts && chown -R smartarts:smartarts /app/database
+# Create a user with the same UID and GID as the host user
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+RUN groupadd -g ${GROUP_ID} smartarts && \
+    useradd -m -u ${USER_ID} -g ${GROUP_ID} smartarts && \
+    chown -R smartarts:smartarts /app/database
 
 # Switch to the non-root user
 USER smartarts
