@@ -2,3 +2,4 @@ flask
 flask-basicauth
 pandas
 xlsxwriter
+gunicorn

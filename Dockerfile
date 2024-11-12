@@ -23,5 +23,13 @@ EXPOSE 5000
 ENV BASIC_AUTH_USERNAME=admin
 ENV BASIC_AUTH_PASSWORD=password
 
-# Command to run the application
-CMD ["python", "app.py"]
+# Switch to non-root user for better security
+RUN useradd -m smartarts
+USER smartarts
+
+# Use Gunicorn instead of Flask's development server
+# -w 4: 4 worker processes
+# -b 0.0.0.0:5000: bind to all interfaces on port 5000
+# --access-logfile -: log to stdout
+# --error-logfile -: log errors to stdout
+CMD ["gunicorn", "--workers=4", "--bind=0.0.0.0:5000", "--access-logfile=-", "--error-logfile=-", "wsgi:app"]
