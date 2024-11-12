@@ -23,21 +23,31 @@ SmartArts is a web application designed to showcase artwork and manage a raffle 
    docker build -t smartarts .
    ```
 
-3. **Run the Docker container**:
+3. **Create required directories and files**:
+   ```bash
+   mkdir -p database
+   cp raffle.db database/raffle.db
+   ```
 
    Ensure you have a .env file with the following variables:
    ```bash
    BASIC_AUTH_USERNAME=your_username
    BASIC_AUTH_PASSWORD=your_password
+   LOCAL_UID=$(id -u)
+   LOCAL_GID=$(id -g)
    ```
-    Start the application using Docker:
-    ```bash
-    docker run -d -p 5000:5000 --name smartarts-container \
-    --env-file .env \
-    smartarts
-    ```
 
-4. **Access the application**:
+4. **Run the Docker container**:
+   ```bash
+   docker run -d \
+     -p 5000:5000 \
+     -v "$(pwd)/database:/app/database" \
+     --env-file .env \
+     --name smartarts-container \
+     smartarts
+   ```
+
+5. **Access the application**:
 
    Open your web browser and go to `http://localhost:5000` to view the application.
 

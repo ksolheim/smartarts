@@ -16,22 +16,18 @@ COPY . .
 # Create the database directory
 RUN mkdir -p database
 
-# Create a user with the same UID and GID as the host user
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-RUN groupadd -g ${GROUP_ID} smartarts && \
-    useradd -m -u ${USER_ID} -g ${GROUP_ID} smartarts && \
-    chown -R smartarts:smartarts /app/database
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Switch to the non-root user
-USER smartarts
+# Create a user with default UID/GID
+RUN groupadd -g 1000 smartarts && \
+    useradd -m -u 1000 -g 1000 smartarts && \
+    chown -R smartarts:smartarts /app/database && \
+    apt-get update && apt-get install -y gosu && rm -rf /var/lib/apt/lists/*
 
-# Expose port 5000
-EXPOSE 5000
-
-# Environment variables can be set here with defaults
-ENV BASIC_AUTH_USERNAME=admin
-ENV BASIC_AUTH_PASSWORD=password
+# Use entrypoint script
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 # Use Gunicorn instead of Flask's development server
 # -w 4: 4 worker processes
