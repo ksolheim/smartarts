@@ -19,5 +19,9 @@ RUN mkdir -p database
 # Expose port 5000
 EXPOSE 5000
 
+# Environment variables can be set here with defaults
+ENV BASIC_AUTH_USERNAME=admin
+ENV BASIC_AUTH_PASSWORD=password
+
 # Command to run the application
 CMD ["python", "app.py"]

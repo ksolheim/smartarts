@@ -9,10 +9,13 @@ import sqlite3
 from flask_basicauth import BasicAuth
 import pandas as pd
 from io import BytesIO
+import os
 
 app = Flask(__name__)
-app.config['BASIC_AUTH_USERNAME'] = 'admin'
-app.config['BASIC_AUTH_PASSWORD'] = 'password'
+
+# Get credentials from environment variables, with fallback defaults
+app.config['BASIC_AUTH_USERNAME'] = os.getenv('BASIC_AUTH_USERNAME', 'admin')
+app.config['BASIC_AUTH_PASSWORD'] = os.getenv('BASIC_AUTH_PASSWORD', 'password')
 basic_auth = BasicAuth(app)
 
 DATABASE = 'database/raffle.db'
