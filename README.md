@@ -18,12 +18,13 @@ SmartArts is a web application designed to showcase artwork and manage a raffle 
    ```
 
 2. **Build the Docker image**:
-   Ensure you have Docker installed, then run:
+
    ```bash
    docker build -t smartarts .
    ```
 
 3. **Run the Docker container**:
+
    Ensure you have a .env file with the following variables:
    ```bash
    BASIC_AUTH_USERNAME=your_username
@@ -37,7 +38,10 @@ SmartArts is a web application designed to showcase artwork and manage a raffle 
     ```
 
 4. **Access the application**:
+
    Open your web browser and go to `http://localhost:5000` to view the application.
+
+   Admin interface is available at `http://localhost:5000/admin`
 
 ## File Structure
 
