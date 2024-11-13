@@ -26,11 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <source src="/static/video/Champ_720P60.mp4" type="video/mp4">
                                     </video>
                                 </div>
+                                <br><br><p class="text-muted fs-6 text-center">Developed by Altera IT with ❤️</p>
+                                <p class="text-muted fs-6 text-center">Code available: <br><a href="https://github.com/ksolheim/smartarts">https://github.com/ksolheim/smartarts</a></p>
                             </div>`;
                     } else {
                         const html = `
                             <div class="artwork-display">
-                                <img src="/static/images/${data.art_id}.jpg" 
+                                <img src="/static/images/art/${data.art_id}.jpg" 
                                      alt="Artwork" 
                                      class="artwork-image shadow-sm mb-4">
                                 <div class="card">
