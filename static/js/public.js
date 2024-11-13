@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <source src="/static/video/Champ_720P60.mp4" type="video/mp4">
                                     </video>
                                 </div>
-                                <p class="text-muted fs-6 text-center"><br><br><br><br><img src="/static/images/logos/github-mark.png" alt="GitHub" style="width: 25x; height: 25px;"><br><a class="text-muted" href="https://github.com/ksolheim/smartarts" style="color: black; text-decoration: none;">ksolheim/smartarts</a></p>
+                                <p class="text-muted fs-6 text-center"><br><br><br><br><img src="/static/images/logos/github-mark.png" alt="GitHub" style="width: 30px; height: 30px;"><br><a class="text-muted" href="https://github.com/ksolheim/smartarts" target="_blank" style="color: black; text-decoration: none;">ksolheim/smartarts</a></p>
                                 <p class="text-muted fs-6 text-center">Developed by Altera IT with ❤️</p>
                             </div>`;
                     } else {
