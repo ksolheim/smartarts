@@ -12,4 +12,3 @@ Dockerfile
 .dockerignore
 .venv
 *.bak
-*.db
