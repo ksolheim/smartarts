@@ -33,18 +33,16 @@ SmartArts is a web application designed to showcase artwork and manage a raffle 
    ```bash
    BASIC_AUTH_USERNAME=your_username
    BASIC_AUTH_PASSWORD=your_password
-   LOCAL_UID=$(id -u)
-   LOCAL_GID=$(id -g)
    ```
 
 4. **Run the Docker container**:
    ```bash
    docker run -d \
-     -p 5000:5000 \
-     -v "$(pwd)/database:/app/database" \
-     --env-file .env \
-     --name smartarts-container \
-     smartarts
+   -p 5000:5000 \
+   -v smartarts_db:/app/database \
+   --env-file .env \
+   --name smartarts-container \
+   smartarts
    ```
 
 5. **Access the application**:
