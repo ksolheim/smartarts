@@ -5,7 +5,8 @@
 
 # :art: SmartArts
 
-SmartArts is a web application designed to showcase artwork and manage a raffle system for selecting winners. The application is built using Flask and provides both public and admin interfaces.
+SmartArts is a web application designed for helping Altera Trondheim Art Club manage their art raffle.
+The application is built using Flask and provides both public and admin interfaces.
 
 ## :sparkles: Features
 
