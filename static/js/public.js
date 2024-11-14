@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </video>
                                 </div>
                                 <p class="text-muted fs-6 text-center"><br><br><br><br><img src="/static/images/logos/github-mark.png" alt="GitHub" style="width: 30px; height: 30px;"><br><a class="text-muted" href="https://github.com/ksolheim/smartarts" target="_blank" style="color: black; text-decoration: none;">ksolheim/smartarts</a></p>
-                                <p class="text-muted fs-6 text-center">Developed by Altera IT with ❤️, but not Per Kristian!</p>
+                                <p class="text-muted fs-6 text-center">Developed by Altera IT with ❤️</p>
                             </div>`;
                     } else {
                         const html = `
