@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  smartarts:
+    image: ghcr.io/ksolheim/smartarts:latest
+    container_name: smartarts-container
+    ports:
+      - "5000:5000"
+    volumes:
+      - smartarts_db:/app/database
+    env_file:
+      - .env
+    restart: unless-stopped
+
+volumes:
+  smartarts_db:
+    name: smartarts_db 
