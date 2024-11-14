@@ -18,25 +18,25 @@ SmartArts is a web application designed to showcase artwork and manage a raffle 
 
 1. Create a `docker-compose.yml` file:
 
-      ```yaml
-         version: '3.8'
+   ```yaml
+   version: '3.8'
 
-         services:
-            smartarts:
-               image: ghcr.io/ksolheim/smartarts:latest
-               container_name: smartarts-container
-               ports:
-                  - "5000:5000"
-               volumes:
-                  - smartarts_db:/app/database
-               env_file:
-                  - .env
-               restart: unless-stopped
-
+   services:
+      smartarts:
+         image: ghcr.io/ksolheim/smartarts:latest
+         container_name: smartarts-container
+         ports:
+            - "5000:5000"
          volumes:
-            smartarts_db:
-               name: smartarts_db
-      ```
+            - smartarts_db:/app/database
+         env_file:
+            - .env
+         restart: unless-stopped
+
+   volumes:
+      smartarts_db:
+         name: smartarts_db
+   ```
 
 2. Run the container:
 
