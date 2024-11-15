@@ -21,4 +21,4 @@ EXPOSE 5000
 # -b 0.0.0.0:5000: bind to all interfaces on port 5000
 # --access-logfile -: log to stdout
 # --error-logfile -: log errors to stdout
-CMD ["gunicorn", "--workers=4", "--bind=0.0.0.0:5000", "--access-logfile=-", "--error-logfile=-", "wsgi:app"]
+CMD ["gunicorn", "--workers=4", "--bind=0.0.0.0:5000", "--timeout=120", "--keep-alive=5", "--max-requests=1000", "--max-requests-jitter=50", "--access-logfile=-", "--error-logfile=-", "wsgi:app"]
