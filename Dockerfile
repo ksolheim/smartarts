@@ -13,6 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
+# Expose port 5000 to the outside world
+EXPOSE 5000
+
 # Use Gunicorn instead of Flask's development server
 # -w 4: 4 worker processes
 # -b 0.0.0.0:5000: bind to all interfaces on port 5000
