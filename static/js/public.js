@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (Object.keys(data).length === 0) {
                         container.innerHTML = `
                             <div class="d-flex flex-column align-items-center w-100">
-                                <p class="text-muted fs-1 text-center"><br><br>We are waiting to start ... <br>Please enjoy your drinks and snacks!<br></p>
-                                <div class="ratio ratio-16x9 mt-4 rounded overflow-hidden shadow-lg" style="width: 90%; max-width: 1200px;">
+                                <p class="text-muted fs-1 text-center">We are waiting to start ... <br>Please enjoy your drinks and snacks!<br></p>
+                                <div class="ratio ratio-16x9 mt-4 rounded overflow-hidden shadow-lg" style="width: 70%; max-width: 1000px;">
                                     <video loop autoplay muted class="VideoMain">
                                         <source src="/static/video/Champ_720P60.mp4" type="video/mp4">
                                     </video>
