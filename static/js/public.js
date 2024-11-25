@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li class="border-bottom py-2">
                                 <div class="fw-bold">${winner.winner_name}</div>
                                 <small class="text-muted">
-                                    Won "${winner.art_title}" by ${winner.artist}
+                                    Won ${winner.art_id}. "${winner.art_title}" by ${winner.artist}
                                 </small>
                             </li>
                         `).join('');
